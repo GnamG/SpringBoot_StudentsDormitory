@@ -168,7 +168,7 @@ function studentAddSave() {
         datType: "json",
         accept: "application/json;charset=UTF-8",
         contentType: "application/json;charset=UTF-8",
-        url: '/student/add',
+        url: '/student/addOrUpdate',
         success: function (data) {
             swal('温馨提示', '新增学生成功', 'success');
             initStudentData();
@@ -216,7 +216,7 @@ function studentUpdateSave() {
         datType: "json",
         accept: "application/json;charset=UTF-8",
         contentType: "application/json;charset=UTF-8",
-        url: '/student/update' ,
+        url: '/student/addOrUpdate' ,
         success: function (data) {// 200表示成功
             swal('温馨提示', '修改学生成功', 'success');
             initStudentData();

@@ -20,23 +20,27 @@ public class StudentController {
     @GetMapping("findAll")
     public List<Student> findAll(){
         List<Student> lives = studentMapper.selectByExample(null);
-        Map<String, Object> map = new HashMap<>();
-        map.put("data",lives);
         return lives;
     }
-    @PostMapping("add")
-    public void add(@RequestBody Student student){
-        student.setId("123486");
-        student.setCreateTime(new Date());
-        studentMapper.insertSelective(student);
-    }
+//    @PostMapping("add")
+//    public void add(@RequestBody Student student){
+//
+//    }
     @GetMapping("delete")
     public void delete(String id){
         studentMapper.deleteByPrimaryKey(id);
     }
-    @PostMapping("update")
-    public void update(@RequestBody Student student){
-        studentMapper.updateByPrimaryKeySelective(student);
+    @PostMapping("addOrUpdate")
+    public void addOrUpdate(@RequestBody Student student){
+        if (student.getId()==null){
+            student.setId("123486");
+            student.setCreateTime(new Date());
+            studentMapper.insertSelective(student);
+        }else {
+            studentMapper.updateByPrimaryKeySelective(student);
+        }
+
+
     }
 
     @GetMapping("findBySn")

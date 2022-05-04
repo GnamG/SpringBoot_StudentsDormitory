@@ -16,7 +16,6 @@ import java.util.Map;
 public class StudentController {
     @Autowired
     private StudentMapper studentMapper;
-
     @GetMapping("findAll")
     public List<Student> findAll(){
         List<Student> lives = studentMapper.selectByExample(null);

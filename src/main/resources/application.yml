@@ -7,7 +7,9 @@ spring:
     url: jdbc:mysql://localhost:3306/dm?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: 636454
-
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 mybatis:
   # 扫描指定路径下的映射文件
   mapper-locations: classpath:com/fc/mapper/*.xml

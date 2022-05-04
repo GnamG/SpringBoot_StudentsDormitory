@@ -71,7 +71,7 @@ function initBuildingData() {
         datType: "json",
         accept: "application/json;charset=UTF-8",
         contentType: "application/json;charset=UTF-8",
-        url: '/building/findALl',
+        url: '/building/findAll',
         success: function (data) {
             contentBuildingData = data;
             addDormitoryManagerData(contentBuildingData);

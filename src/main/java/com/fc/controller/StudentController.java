@@ -13,7 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("student")
-public class StudentController {
+public class StudentController {// 使用三层架构，后替换掉这个测试
     @Autowired
     private StudentMapper studentMapper;
 

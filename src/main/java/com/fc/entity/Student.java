@@ -1,27 +1,15 @@
 package com.fc.entity;
 
-import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.util.Date;
-@Data
 public class Student {
-    @Id
-    @GenericGenerator(name = "idGenerator", strategy = "uuid")
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "idGenerator")
-    @Column(unique = true, nullable = false, length = 32)
+
     private String id;
 
-    @CreatedDate
+
     private Date createTime;
 
-    @LastModifiedDate
+
     private Date updateTime;
 
     private String valid;

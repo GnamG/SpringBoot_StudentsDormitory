@@ -30,4 +30,6 @@ public interface StudentMapper {
     int updateByPrimaryKeySelective(Student row);
 
     int updateByPrimaryKey(Student row);
+    List<Student> findByName(String name);
+    Student findBySn(String sn);
 }

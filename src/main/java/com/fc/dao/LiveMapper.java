@@ -2,7 +2,8 @@ package com.fc.dao;
 
 import com.fc.entity.Live;
 import com.fc.entity.LiveExample;
-import org.springframework.data.repository.query.Param;
+import org.apache.ibatis.annotations.Param;
+
 
 import java.util.List;
 

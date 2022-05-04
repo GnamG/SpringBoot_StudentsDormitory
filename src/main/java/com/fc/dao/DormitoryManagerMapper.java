@@ -3,9 +3,10 @@ package com.fc.dao;
 import com.fc.entity.DormitoryManager;
 import com.fc.entity.DormitoryManagerExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface DormitoryManagerMapper {
     long countByExample(DormitoryManagerExample example);
 
@@ -28,4 +29,6 @@ public interface DormitoryManagerMapper {
     int updateByPrimaryKeySelective(DormitoryManager row);
 
     int updateByPrimaryKey(DormitoryManager row);
+    List<DormitoryManager> findByName(String name);
+    DormitoryManager findBySn(String sn);
 }

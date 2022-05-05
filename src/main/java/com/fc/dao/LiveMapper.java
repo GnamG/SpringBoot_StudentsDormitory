@@ -3,11 +3,12 @@ package com.fc.dao;
 import com.fc.entity.Live;
 import com.fc.entity.LiveExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 
 import java.util.List;
 
-
+@Repository
 public interface LiveMapper {
     long countByExample(LiveExample example);
 

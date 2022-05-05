@@ -90,9 +90,9 @@
          */
         $(function () {
             var account = localStorage.getItem("account");
-            if (isNull(account)) {
-                window.location.href = "login.html";
-            }
+            // if (isNull(account)) {
+            //     window.location.href = "login.html";
+            // }
             var type = localStorage.getItem("type");
             loginType = type;
             if (type === '2') {

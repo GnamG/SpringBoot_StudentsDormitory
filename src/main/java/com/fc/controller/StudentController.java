@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+
 import java.util.List;
+
 
 @RestController
 @RequestMapping("student")
-public class StudentController {// 使用三层架构，后替换掉这个测试
+public class StudentController {
     @Autowired
     private StudentService studentService;
 
@@ -18,10 +20,7 @@ public class StudentController {// 使用三层架构，后替换掉这个测试
     public List<Student> findAll(){
         return studentService.findAll();
     }
-//    @PostMapping("add")
-//    public void add(@RequestBody Student student){
-//
-//    }
+
     @GetMapping("delete")
     public void delete(String id){
         studentService.delete(id);
@@ -49,7 +48,10 @@ public class StudentController {// 使用三层架构，后替换掉这个测试
         }else {
             studentService.update(student);
         }
+
+
     }
+
     @GetMapping("findBySn")
     public Student findBySn(String sn){
         return studentService.findBySn(sn);
@@ -59,4 +61,5 @@ public class StudentController {// 使用三层架构，后替换掉这个测试
     public List<Student> findByName(String name){
         return studentService.findByName(name);
     }
+
 }

@@ -159,4 +159,16 @@ public class LoginServiceImpl implements LoginService {
         }
       return respVo;
     }
+
+    @Override
+    public LoginRespVo<Object> Logout(LoginReqVo loginReqVo, HttpSession session) {
+        LoginRespVo<Object> respVo = new LoginRespVo<>();
+        respVo.setRequestId(loginReqVo.getRequestId());
+        respVo.setOperator(loginReqVo.getOperator());
+        respVo.setCode("0000");
+        respVo.setInfo("成功");
+        respVo.setTimestamp(System.currentTimeMillis());
+        return respVo;
+    }
+
 }

@@ -168,6 +168,8 @@ public class LoginServiceImpl implements LoginService {
         respVo.setCode("0000");
         respVo.setInfo("成功");
         respVo.setTimestamp(System.currentTimeMillis());
+        session.removeAttribute("user");
+        session.removeAttribute("userType");
         return respVo;
     }
 

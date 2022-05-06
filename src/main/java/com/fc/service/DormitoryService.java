@@ -11,6 +11,6 @@ public interface DormitoryService {
 
     Dormitory findBySn(String sn);
 
-    void update(Dormitory dormitory);
+    void addOrUpdate(Dormitory dormitory);
 
 }

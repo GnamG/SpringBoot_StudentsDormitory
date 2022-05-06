@@ -40,17 +40,17 @@ public class DormitoryServiceImpl implements DormitoryService {
     }
 
     @Override
-    public void update(Dormitory dormitory) {
-
+    public void addOrUpdate(Dormitory dormitory) {
         if (dormitory.getId() == null) {
-            String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+            //没有id就添加,createtime
+            String uuid = UUID.randomUUID().toString().trim().replaceAll("-", "");
             dormitory.setId(uuid);
             dormitory.setCreateTime(new Date());
-
+            //插入一个
             dormitoryMapper.insertSelective(dormitory);
         } else {
+            //修改
             dormitoryMapper.updateByPrimaryKeySelective(dormitory);
         }
-
     }
 }

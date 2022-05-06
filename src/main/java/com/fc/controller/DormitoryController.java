@@ -33,10 +33,10 @@ public class DormitoryController {
         return dormitoryService.findBySn(sn);
     }
 
-    //update
-    @PostMapping("update")
-    public void update(@RequestBody Dormitory dormitory) {
-        dormitoryService.update(dormitory);
+    //有id就修改，没有id就添加id和createtime
+    @PostMapping("addOrUpdate")
+    public void addOrUpdate(@RequestBody Dormitory dormitory) {
+        dormitoryService.addOrUpdate(dormitory);
     }
 
 

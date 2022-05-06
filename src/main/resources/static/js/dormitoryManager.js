@@ -221,7 +221,7 @@ function dormitoryManagerDelete(id) {
         datType: "json",
         accept: "application/json;charset=UTF-8",
         contentType: "application/json;charset=UTF-8",
-        url: '/dormitoryManager/delete?id'+id,
+        url: '/dormitoryManager/delete?id='+id,
         success: function (data) {
             swal('温馨提示', '删除宿管成功', 'success');
             initDormitoryManagerData();

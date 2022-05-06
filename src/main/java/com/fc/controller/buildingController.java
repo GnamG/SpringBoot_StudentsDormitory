@@ -1,33 +1,38 @@
 package com.fc.controller;
 
+import com.fc.entity.Building;
 import com.fc.entity.Student;
-import com.fc.service.StudentService;
+import com.fc.service.BuildingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping("student")
-public class StudentController {// 使用三层架构，后替换掉这个测试
+@RequestMapping("building")
+public class buildingController {
     @Autowired
-    private StudentService studentService;
+    private BuildingService buildingService;
 
     @GetMapping("findAll")
-    public List<Student> findAll(){
-        return studentService.findAll();
+    public List<Building> findAll(){
+        return buildingService.findAll();
     }
-//    @PostMapping("add")
-//    public void add(@RequestBody Student student){
-//
-//    }
+
     @GetMapping("delete")
     public void delete(String id){
-        studentService.delete(id);
+        buildingService.delete(id);
     }
+
+    @GetMapping("findByName")
+    public Building findByName(String name){
+        return buildingService.findByName(name);
+    }
+
     @PostMapping("addOrUpdate")
-    public void addOrUpdate(@RequestBody Student student){
+    public void addOrUpdate(@RequestBody Building building){
         //六位随机数加字母
         StringBuilder randomCode = new StringBuilder();
         // 用字符数组的方式随机
@@ -42,21 +47,12 @@ public class StudentController {// 使用三层架构，后替换掉这个测试
             }
             randomCode.append(c);
         }
-        if (student.getId()==null){
-            student.setId(randomCode.toString());
-            student.setCreateTime(new Date());
-            studentService.add(student);
+        if (building.getId()==null){
+            building.setCreateTime(new Date());
+            building.setId(randomCode.toString());
+            buildingService.add(building);
         }else {
-            studentService.update(student);
+            buildingService.update(building);
         }
-    }
-    @GetMapping("findBySn")
-    public Student findBySn(String sn){
-        return studentService.findBySn(sn);
-    }
-
-    @GetMapping("findByName")
-    public List<Student> findByName(String name){
-        return studentService.findByName(name);
     }
 }

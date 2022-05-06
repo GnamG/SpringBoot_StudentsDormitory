@@ -3,10 +3,7 @@ package com.fc.controller;
 import com.fc.entity.Live;
 import com.fc.service.LiveService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -22,13 +19,13 @@ public class LiveController {
         return liveService.findAll();
     }
 
-    @PostMapping("delete")
+    @GetMapping("delete")
     public void delete(String id){
         liveService.delete(id);
     }
 
     @PostMapping("addOrUpdate")
-    public void addOrUpdate(Live live){
+    public void addOrUpdate(@RequestBody Live live){
         //六位随机数加字母
         StringBuilder randomCode = new StringBuilder();
         // 用字符数组的方式随机

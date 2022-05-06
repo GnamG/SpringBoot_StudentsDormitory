@@ -4,10 +4,7 @@ import com.fc.entity.Admin;
 import com.fc.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -30,7 +27,7 @@ public class AdminController {
     }
 
     @PostMapping("addOrUpdate")
-    public void addOrUpdate(Admin admin){
+    public void addOrUpdate(@RequestBody Admin admin){
         //六位随机数加字母
         StringBuilder randomCode = new StringBuilder();
         // 用字符数组的方式随机

@@ -1,26 +1,22 @@
 package com.fc.controller;
 
-import com.fc.dao.StudentMapper;
 import com.fc.entity.Student;
-import com.fc.entity.StudentExample;
+import com.fc.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("student")
 public class StudentController {// 使用三层架构，后替换掉这个测试
     @Autowired
-    private StudentMapper studentMapper;
+    private StudentService studentService;
 
     @GetMapping("findAll")
     public List<Student> findAll(){
-        List<Student> lives = studentMapper.selectByExample(null);
-        return lives;
+        return studentService.findAll();
     }
 //    @PostMapping("add")
 //    public void add(@RequestBody Student student){
@@ -28,39 +24,39 @@ public class StudentController {// 使用三层架构，后替换掉这个测试
 //    }
     @GetMapping("delete")
     public void delete(String id){
-        studentMapper.deleteByPrimaryKey(id);
+        studentService.delete(id);
     }
     @PostMapping("addOrUpdate")
     public void addOrUpdate(@RequestBody Student student){
-        if (student.getId()==null){
-            student.setId("123486");
-            student.setCreateTime(new Date());
-            studentMapper.insertSelective(student);
-        }else {
-            studentMapper.updateByPrimaryKeySelective(student);
+        //六位随机数加字母
+        StringBuilder randomCode = new StringBuilder();
+        // 用字符数组的方式随机
+        String model = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        char[] m = model.toCharArray();
+        for (int j = 0; j < 6; j++) {
+            char c = m[(int) (Math.random() * 36)];
+            // 保证六位随机数之间没有重复的
+            if (randomCode.toString().contains(String.valueOf(c))) {
+                j--;
+                continue;
+            }
+            randomCode.append(c);
         }
-
-
+        if (student.getId()==null){
+            student.setId(randomCode.toString());
+            student.setCreateTime(new Date());
+            studentService.add(student);
+        }else {
+            studentService.update(student);
+        }
     }
-
     @GetMapping("findBySn")
     public Student findBySn(String sn){
-        StudentExample example = new StudentExample();
-        StudentExample.Criteria criteria = example.createCriteria();
-        criteria.andSnEqualTo(sn);
-        List<Student> students = studentMapper.selectByExample(example);
-        return students.get(0);
+        return studentService.findBySn(sn);
     }
 
     @GetMapping("findByName")
     public List<Student> findByName(String name){
-        StudentExample example = new StudentExample();
-        StudentExample.Criteria criteria = example.createCriteria();
-        criteria.andNameEqualTo(name);
-        List<Student> students = studentMapper.selectByExample(example);
-        Map<String, Object> map = new HashMap<>();
-        map.put("data",students);
-        return students;
+        return studentService.findByName(name);
     }
-
 }

@@ -3,9 +3,10 @@ package com.fc.dao;
 import com.fc.entity.Dormitory;
 import com.fc.entity.DormitoryExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public interface DormitoryMapper {
     long countByExample(DormitoryExample example);
 

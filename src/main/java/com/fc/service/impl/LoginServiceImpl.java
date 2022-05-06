@@ -15,7 +15,6 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpSession;
-
 import java.util.List;
 
 @Service
@@ -158,18 +157,5 @@ public class LoginServiceImpl implements LoginService {
             }
         }
       return respVo;
-    }
-
-    @Override
-    public LoginRespVo<Object> Logout(LoginReqVo loginReqVo, HttpSession session) {
-        LoginRespVo<Object> vo = new LoginRespVo<>();
-        vo.setRequestId(loginReqVo.getRequestId());
-        vo.setOperator(loginReqVo.getCaptcha());
-        vo.setCode("0000");
-        vo.setInfo("退出成功");
-        vo.setTimestamp(System.currentTimeMillis());
-        session.removeAttribute("user");
-        session.removeAttribute("userType");
-        return vo;
     }
 }

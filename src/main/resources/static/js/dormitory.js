@@ -75,7 +75,7 @@ function initDormitoryData() {
         contentType: "application/json;charset=UTF-8",
         url: '/dormitory/findAll',
         success: function (data) {
-            contentDormitoryData = data.data;
+            contentDormitoryData = data;
             addBuildingData(contentDormitoryData);
         },
         error: function (data) {

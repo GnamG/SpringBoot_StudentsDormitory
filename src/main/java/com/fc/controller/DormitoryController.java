@@ -28,7 +28,7 @@ public class DormitoryController {
     }
 
     //findBySn
-    @PostMapping("findBySn")
+    @GetMapping("findBySn")
     public Dormitory findBySn(String sn) {
         return dormitoryService.findBySn(sn);
     }

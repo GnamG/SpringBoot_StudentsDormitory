@@ -15,7 +15,6 @@ import springfox.documentation.annotations.ApiIgnore;
 import javax.servlet.http.HttpSession;
 @Api("登录模块")
 @RestController
-
 public class LoginController {
     @Autowired
     private LoginService loginService;
@@ -24,5 +23,9 @@ public class LoginController {
     public LoginRespVo<Object> login(@RequestBody LoginReqVo loginReqVo, HttpSession session){
         return loginService.login(loginReqVo,session);
     }
-
+    @ApiOperation("退出登录")
+    @PostMapping("logout")
+    public LoginRespVo<Object> logout(@RequestBody LoginReqVo loginReqVo,HttpSession session){
+        return loginService.Logout(loginReqVo,session);
+    }
 }

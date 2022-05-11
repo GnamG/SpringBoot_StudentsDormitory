@@ -30,4 +30,6 @@ public interface BuildingMapper {
     int updateByPrimaryKeySelective(Building row);
 
     int updateByPrimaryKey(Building row);
+
+    List<Building> findAll();
 }

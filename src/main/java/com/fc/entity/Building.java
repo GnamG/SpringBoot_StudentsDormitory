@@ -19,6 +19,26 @@ public class Building {
 
     private String name;
 
+    private String dormitoryManagerSn;
+
+    private String dormitoryManagerName;
+
+    public String getDormitoryManagerSn() {
+        return dormitoryManagerSn;
+    }
+
+    public void setDormitoryManagerSn(String dormitoryManagerSn) {
+        this.dormitoryManagerSn = dormitoryManagerSn;
+    }
+
+    public String getDormitoryManagerName() {
+        return dormitoryManagerName;
+    }
+
+    public void setDormitoryManagerName(String dormitoryManagerName) {
+        this.dormitoryManagerName = dormitoryManagerName;
+    }
+
     public String getId() {
         return id;
     }

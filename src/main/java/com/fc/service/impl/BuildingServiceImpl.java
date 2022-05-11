@@ -19,7 +19,7 @@ public class BuildingServiceImpl implements BuildingService {
     private BuildingMapper buildingMapper;
     @Override
     public List<Building> findAll() {
-        return buildingMapper.selectByExample(null);
+        return buildingMapper.findAll();
     }
 
     @Override

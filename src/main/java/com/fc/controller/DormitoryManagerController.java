@@ -22,7 +22,7 @@ public class DormitoryManagerController {
 
 
     //根据宿管编号查询
-    @PostMapping("findBySn")
+    @GetMapping("findBySn")
     public DormitoryManager findBySn(String sn) {
         return dormitoryManagerService.findBySn(sn);
     }
